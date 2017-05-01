@@ -1,11 +1,17 @@
+type ValidStyleName = 'background-color' | 'border-color';
 
-function generateColor() {
+function generateColor(): string {
     return "#"+((1<<24)*Math.random()|0).toString(16);
 }
 
-function main() {
-    var appComponent = document.getElementById('rainbow')
+function mutateElement(elId: string, style: ValidStyleName, int: number): void {
+    var appComponent = document.getElementById(elId)
     setInterval(function() {
-        appComponent.style['background-color'] = generateColor();
-    }, 1500)
+        var color: string = generateColor();
+        appComponent.style[style] = color;
+    }, int)
+}
+
+function main() {
+    mutateElement('rainbow', 'border-color', 500)
 }

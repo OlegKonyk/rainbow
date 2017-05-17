@@ -1,19 +1,21 @@
 type ValidStyleName = 'background-color' | 'border-color';
 
+interface mutateConfig { elId: string, style: ValidStyleName, int?: number };
+
 function generateColor(): string {
     return "#"+((1<<24)*Math.random()|0).toString(16);
 }
 
-function mutateElement(elId: string, style: ValidStyleName, int?: number): void {
-    var appComponent = document.getElementById(elId)
+function mutateElement(options: mutateConfig): void {
+    var appComponent = document.getElementById(options.elId)
     setInterval(function() {
         var color: string = generateColor();
         if (appComponent) {
-            appComponent.style[style] = color;
+            appComponent.style[options.style] = color;
         }
-    }, int);
+    }, options.int);
 }
 
 function main() {
-    mutateElement('rainbow', 'border-color', 500)
+    mutateElement({elId: 'rainbow', style: 'border-color', int: 500})
 }

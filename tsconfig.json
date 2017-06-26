@@ -2,10 +2,16 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es5",
-        "noImplicitAny": false,
-        "sourceMap": false,
         "allowJs": true,
         "outDir": "dist",
+        "noImplicitAny": false,
+        "sourceMap": false,
+<<<<<<< HEAD
+        "allowJs": true,
+        "outDir": "dist",
+=======
+        "noEmitOnError": true,
+>>>>>>> modules_and_webpak
         "strictNullChecks": true
     }
 }

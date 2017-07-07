@@ -6,12 +6,7 @@
         "outDir": "dist",
         "noImplicitAny": false,
         "sourceMap": false,
-<<<<<<< HEAD
-        "allowJs": true,
-        "outDir": "dist",
-=======
         "noEmitOnError": true,
->>>>>>> modules_and_webpak
         "strictNullChecks": true
     }
 }

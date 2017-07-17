@@ -1,7 +1,8 @@
-import { mutateElement } from './utils';
+import { App } from './utils';
 
 function main() {
-    mutateElement('rainbow', 'border-color', 1500);
+    const app = new App();
+    app.startOnInit();
 }
 
 main();

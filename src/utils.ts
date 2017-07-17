@@ -1,31 +1,30 @@
 export type ValidStyleName = 'border-color' | 'background-color';
-export interface IMutateElement {
-    elId: string,
+
+export interface IApp {
     style: ValidStyleName,
     int: number
 }
 
-export function generateColor(): string {
-    return "#"+((1<<24)*Math.random()|0).toString(16);
+export class App implements IApp {
+    static elId: string = 'rainbow';
+    int: number;
+    style: ValidStyleName;
+    constructor() {
+        this.style = 'border-color';
+        this.int = 1500;
+    }
+
+    startOnInit(): void {
+        var element = document.getElementById(App.elId);
+        setInterval(() => {
+            if (element) {
+                element.style[this.style] = generateColor();
+            }
+        }, this.int);    
+    }
 }
 
-export function mutateElement(elId: string, style: ValidStyleName, int: number): void
-export function mutateElement(option: IMutateElement): void
-export function mutateElement(optionsOrId, style?, int?): void {
-    if (typeof optionsOrId == 'string') {
-        var appComponent = document.getElementById(optionsOrId);
-        setInterval(function() {
-            if (appComponent) {
-                appComponent.style[style] = generateColor();
-            }
-        }, int);
-    } else {
-        var appComponent = document.getElementById(optionsOrId.elId);
-        setInterval(function() {
-            if (appComponent) {
-                appComponent.style[optionsOrId.style] = generateColor();
-            }
-        }, optionsOrId.int);
-    }
-    
+
+export function generateColor(): string {
+    return "#"+((1<<24)*Math.random()|0).toString(16);
 }

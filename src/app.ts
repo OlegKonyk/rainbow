@@ -1,4 +1,4 @@
-import { App } from './utils';
+import {  App } from './utils';
 
 function main() {
     const app = new App();

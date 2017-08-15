@@ -1,7 +1,20 @@
 export type ValidStyleName = 'border-color' | 'background-color';
 
+function Component(options: { id: string}) {
+    return (target) => {
+        target.elId = options.id;
+    }
+}
+
+function param(x, name, index) {
+    console.log(x, name, index);
+}
+
+@Component({
+    id: 'rainbow'
+})
 export class App {
-    private static readonly elId: string = 'rainbow';
+    static elId: string;
     private int: number;
     private style: ValidStyleName;
 
@@ -10,7 +23,7 @@ export class App {
         this.int = 1500;
     }
 
-    public startOnInit(): void {
+    public startOnInit(@param version: string): void {
         var appComponent = document.getElementById(App.elId);
         setInterval(() => {
             if (appComponent) {

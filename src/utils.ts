@@ -1,3 +1,4 @@
+import { random } from 'lodash';
 export type ValidStyleName = 'border-color' | 'background-color';
 
 function Component(options: { id: string}) {
@@ -20,7 +21,7 @@ export class App {
 
     constructor() {
         this.style = 'border-color';
-        this.int = 1500;
+        this.int = random(500, 2000);
     }
 
     public startOnInit(@param version: string): void {
